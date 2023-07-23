@@ -7,7 +7,6 @@ A simple project to test [Valve GNS library](https://github.com/ValveSoftware/Ga
 To build the server part and then the client you need to follow the following procedures: 
 
 - You need to install vcpkg;
-- You need to create a new triplets for the client to be linked;
 - You need to build the server;
 - You can now build the client.
 
@@ -19,22 +18,6 @@ Install VCPKG from the [github repo](https://github.com/microsoft/vcpkg/) or if 
 git clone https://github.com/microsoft/vcpkg.git
 cd vcpkg
 ./bootstrap-vcpkg.bat
-```
-
-### Add a new triplet
-
-To make it link with Unreal Engine you will need to pack everything in the
-`.lib`. To achieve this you need a new triplet that will tell the system to
-build everything in static EXCEPT the CRT.
-
-Add a new file to the triplets directory in the vcpkg directory (that you
-just created above) and name it `x64-windows-static-md.cmake`. This file
-should contain the following:
-
-```cmake
-set(VCPKG_TARGET_ARCHITECTURE x64)
-set(VCPKG_CRT_LINKAGE dynamic)
-set(VCPKG_LIBRARY_LINKAGE static)
 ```
 
 ### Create the server
