@@ -1,0 +1,11 @@
+{
+    "name": "gns-sphere-mmo-server",
+    "version": "0.0.1-alpha",
+    "homepage": "https://github.com/anirul/gns-sphere-mmo/",
+    "description": "A simple MMO game made with GNS and Unreal Engine",
+    "dependencies": [
+        "abseil",
+        "gtest",
+        "gamenetworkingsockets"
+    ]
+}
