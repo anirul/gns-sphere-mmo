@@ -5,8 +5,9 @@ add_executable(SphereMmoServer
 )
 
 target_include_directories(SphereMmoServer
-    PUBLIC
-        ${CMAKE_BINARY_DIR}
+  PUBLIC
+    ${CMAKE_SOURCE_DIR}
+    ${CMAKE_CURRENT_BINARY_DIR}
 )
 
 target_link_libraries(SphereMmoServer

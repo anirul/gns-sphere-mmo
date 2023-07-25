@@ -4,6 +4,18 @@ add_library(SphereMmoCommon
     STATIC
         game_networking_sockets.cpp
         game_networking_sockets.h
+        sphere_client.cpp
+        sphere_client.h
+        sphere_mmo_server.cpp
+        sphere_mmo_server.h
+        sphere_mmo_client.cpp
+        sphere_mmo_client.h
+)
+
+target_include_directories(SphereMmoCommon
+  PUBLIC
+    ${CMAKE_SOURCE_DIR}
+    ${CMAKE_CURRENT_BINARY_DIR}
 )
 
 target_link_libraries(SphereMmoCommon

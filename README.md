@@ -31,7 +31,7 @@ git clone https://github.com/anirul/gns-sphere-mmo.git
 cd gns-sphere-mmo
 mkdir build
 cd build
-cmake .. -DCMAKE_TOOLCHAIN_FILE="[path to VCPKG]\scripts\buildsystems\vcpkg.cmake" -DVCPKG_TARGET_TRIPLET=x64-windows-static-md
+cmake .. -DCMAKE_TOOLCHAIN_FILE="[path to VCPKG]\scripts\buildsystems\vcpkg.cmake"
 ```
 
 You should now have a `gns-sphere-mmo-server.sln` file in your directory that is the
