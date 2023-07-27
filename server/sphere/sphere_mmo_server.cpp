@@ -1,4 +1,4 @@
-#include "common/gns/sphere_mmo_server.h"
+#include "sphere_mmo_server.h"
 
 #include <assert.h>
 #include <stdarg.h>

@@ -11,7 +11,7 @@
 
 namespace gns {
 
-class SphereMmoServer : private GameNetworkingSockets {
+class SphereMmoServer : public GameNetworkingSockets {
  public:
   SphereMmoServer();
   void Run(std::int16_t);

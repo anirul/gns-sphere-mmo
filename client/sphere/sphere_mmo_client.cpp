@@ -1,4 +1,4 @@
-#include "common/gns/sphere_mmo_client.h"
+#include "sphere_mmo_client.h"
 
 #include <assert.h>
 #include <stdarg.h>
@@ -11,6 +11,7 @@
 #include <algorithm>
 #include <cctype>
 #include <chrono>
+#include <format>
 #include <map>
 #include <mutex>
 #include <queue>
@@ -28,9 +29,10 @@ void SphereMmoClient::Run(std::string_view server_address) {
   steam_networking_sockets_ = SteamNetworkingSockets();
   char szAddr[SteamNetworkingIPAddr::k_cchMaxString];
   SteamNetworkingIPAddr server_ip_address{};
-  server_ip_address.ParseString(server_address.data());
+  std::string address = std::string(server_address);
+  server_ip_address.ParseString(address.c_str());
   server_ip_address.ToString(szAddr, sizeof(szAddr), true);
-  printf("Connecting to %s\n", szAddr);
+  Print(std::format("Connecting to {}\n", szAddr));
   SteamNetworkingConfigValue_t opt;
   opt.SetPtr(k_ESteamNetworkingConfig_Callback_ConnectionStatusChanged,
              (void*)SteamNetConnectionStatusChangedCallback);
@@ -92,20 +94,20 @@ void SphereMmoClient::OnSteamNetConnectionStatusChanged(
       if (pInfo->m_eOldState == k_ESteamNetworkingConnectionState_Connecting) {
         // Note: we could distinguish between a timeout, a rejected
         // connection, or some other transport problem.
-        printf(
+        Print(std::format(
             "We sought the remote host, yet our efforts were met with "
-            "defeat.  (%s)",
-            pInfo->m_info.m_szEndDebug);
+            "defeat.  ({})",
+            pInfo->m_info.m_szEndDebug));
       } else if (pInfo->m_info.m_eState ==
                  k_ESteamNetworkingConnectionState_ProblemDetectedLocally) {
-        printf(
+        Print(std::format(
             "Alas, troubles beset us; we have lost contact with the host.  "
-            "(%s)",
-            pInfo->m_info.m_szEndDebug);
+            "({})",
+            pInfo->m_info.m_szEndDebug));
       } else {
         // NOTE: We could check the reason code for a normal disconnection
-        printf("The host hath bidden us farewell.  (%s)",
-               pInfo->m_info.m_szEndDebug);
+        Print(std::format("The host hath bidden us farewell.  ({})",
+                          pInfo->m_info.m_szEndDebug));
       }
 
       // Clean up the connection.  This is important!
@@ -125,7 +127,7 @@ void SphereMmoClient::OnSteamNetConnectionStatusChanged(
       break;
 
     case k_ESteamNetworkingConnectionState_Connected:
-      printf("Connected to server OK");
+      Print("Connected to server OK");
       break;
 
     default:

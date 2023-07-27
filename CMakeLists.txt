@@ -15,4 +15,5 @@ find_package(GameNetworkingSockets CONFIG REQUIRED)
 
 # Sources.
 add_subdirectory(server/sphere)
+add_subdirectory(client/sphere)
 add_subdirectory(common/gns)

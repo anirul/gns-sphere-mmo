@@ -1,18 +1,18 @@
-# Sphere mmo server files.
+# Sphere mmo client files.
 
-add_executable(SphereMmoServer
+add_executable(SphereMmoClient
     main.cpp
-    sphere_mmo_server.cpp
-    sphere_mmo_server.h
+    sphere_mmo_client.cpp
+    sphere_mmo_client.h
 )
 
-target_include_directories(SphereMmoServer
+target_include_directories(SphereMmoClient
   PUBLIC
     ${CMAKE_SOURCE_DIR}
     ${CMAKE_CURRENT_BINARY_DIR}
 )
 
-target_link_libraries(SphereMmoServer
+target_link_libraries(SphereMmoClient
     PRIVATE
         SphereMmoCommon
         absl::base
@@ -23,4 +23,4 @@ target_link_libraries(SphereMmoServer
         GameNetworkingSockets::GameNetworkingSockets
 )
 
-set_property(TARGET SphereMmoServer PROPERTY FOLDER "SphereMmoServer")
+set_property(TARGET SphereMmoClient PROPERTY FOLDER "SphereMmoClient")

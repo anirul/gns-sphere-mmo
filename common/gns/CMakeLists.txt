@@ -6,10 +6,6 @@ add_library(SphereMmoCommon
         game_networking_sockets.h
         sphere_client.cpp
         sphere_client.h
-        sphere_mmo_server.cpp
-        sphere_mmo_server.h
-        sphere_mmo_client.cpp
-        sphere_mmo_client.h
 )
 
 target_include_directories(SphereMmoCommon

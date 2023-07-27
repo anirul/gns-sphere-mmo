@@ -1,7 +1,8 @@
 
-#include "common/gns/game_networking_sockets.h"
+#include "sphere_mmo_server.h"
 
 int main(int ac, char** av) {
-  gns::GameNetworkingSockets gns{};
+  gns::SphereMmoServer server{};
+  server.Run(27015);
   return 0;
 }

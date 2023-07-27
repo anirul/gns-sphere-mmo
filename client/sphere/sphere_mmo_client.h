@@ -9,7 +9,7 @@
 
 namespace gns {
 
-class SphereMmoClient : private GameNetworkingSockets {
+class SphereMmoClient : public GameNetworkingSockets {
  public:
   SphereMmoClient();
   void Run(std::string_view server_address);
